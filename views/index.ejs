@@ -24,34 +24,21 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Example static data replacing EJS -->
+        <% students.forEach(student => { %>
             <tr>
-                <td>Alice Johnson</td>
-                <td>10</td>
-                <td>101</td>
-                <td>$500</td>
-                <td>11/06/2025</td>
+                <td><%= student.name %></td>
+                <td><%= student.class %></td>
+                <td><%= student.rollNumber %></td>
+                <td>$<%= student.feeAmount %></td>
+                <td><%= student.paymentDate.toLocaleDateString() %></td>
                 <td>
-                    <a href="/edit/1" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="/delete/1" method="POST" style="display:inline;">
+                    <a href="/edit/<%= student._id %>" class="btn btn-sm btn-warning">Edit</a>
+                    <form action="/delete/<%= student._id %>" method="POST" style="display:inline;">
                         <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </form>
                 </td>
             </tr>
-            <tr>
-                <td>Bob Smith</td>
-                <td>9</td>
-                <td>102</td>
-                <td>$450</td>
-                <td>11/05/2025</td>
-                <td>
-                    <a href="/edit/2" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="/delete/2" method="POST" style="display:inline;">
-                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <!-- Add more rows as needed -->
+        <% }) %>
         </tbody>
     </table>
 </div>
